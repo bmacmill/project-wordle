@@ -17,6 +17,7 @@ function GuessInput() {
       pattern="[A-Za-z]{5}"
       minLength={5}
       maxLength={5}
+      title="5 letter word"
       value={inputText}
       disable={inputText.length < 4 ? "true" : "false"}
       onChange={(e) => {
