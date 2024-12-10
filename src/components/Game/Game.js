@@ -10,9 +10,22 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
+  const [guesses, setGuesses] = React.useState([])
+
+  function handleInputGuess(inputText) {
+   
+    const nextGuess = {
+      guess: inputText,
+      id: crypto.randomUUID()
+    }
+    const allGuesses = [...guesses, nextGuess]
+    console.log({ guesses })
+    setGuesses(allGuesses)
+  }
+
   return <>
-    <GuessList />
-    {/* <GuessInput /> */}
+    <GuessList guesses={guesses} />
+    <GuessInput handleInputGuess={handleInputGuess} />
 
   </>;
 }

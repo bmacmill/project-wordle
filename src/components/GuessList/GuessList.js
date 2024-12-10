@@ -1,25 +1,15 @@
 import React from 'react';
-import GuessInput from '../GuessInput';
 
-function GuessList() {
-  const [guessList, setGuessList] = React.useState([""])
 
-  function handleInputGuess(inputText) {
-    const nextGuess = {
-      guess: inputText,
-      id: crypto.randomUUID()
-    }
-    const allGuesses = [...guessList, nextGuess]
-    console.log({ guessList })
-    setGuessList(allGuesses)
-  }
+function GuessList({ guesses }) {
+
   return <div className="guess-results">
-    {guessList.length > 0 && guessList.map((el) => (
+    {guesses.map(({ id, guess }) => (
 
-      <p key={el.id} className="guess" > {el.guess}</p>
+      <p key={id} className="guess" > {guess}</p>
     )
     )}
-    <GuessInput handleInputGuess={handleInputGuess} />
+
   </div>;
 }
 
