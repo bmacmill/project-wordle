@@ -1,15 +1,25 @@
 import React from 'react';
-
+import Guess from "../Guess"
+import { NUM_OF_GUESSES_ALLOWED } from "../../constants.js"
+import { range } from "../../utils.js"
 
 function GuessList({ guesses }) {
 
   return <div className="guess-results">
-    {guesses.map(({ id, guess }) => (
 
-      <p key={id} className="guess" > {guess}</p>
-    )
-    )}
+    {/* {range(NUM_OF_GUESSES_ALLOWED).map((num, i) => (
 
+
+      <Guess value={guesses[num]} key={num} />
+    ))} */}
+
+    {/* {guess.split("").map((el, i) => <span key={i} className="cell">{el}</span>)} */}
+
+
+
+    {range(NUM_OF_GUESSES_ALLOWED).map((num) => (
+      <Guess value={guesses[num]} key={num} />
+    ))}
   </div>;
 }
 
