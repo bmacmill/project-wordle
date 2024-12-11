@@ -1,9 +1,10 @@
 import React from 'react';
 import { range } from "../../utils.js"
-
+import { checkGuess } from "../../game-helpers.js"
 
 
 function Guess({ value }) {
+
 
     return (<p className="guess">
         {/* {range(5).map((num, i) => (
@@ -13,7 +14,7 @@ function Guess({ value }) {
         } */}
 
 
-        {range(5).map((letter, index) => (
+        {range(5).map((_, index) => (
             <span key={index} className="cell">{value ? value.guess[index] : undefined}</span>
         )
         )}
