@@ -3,9 +3,14 @@ import { range } from "../../utils.js"
 import { checkGuess } from "../../game-helpers.js"
 
 
-function Guess({ value }) {
-
-
+function Guess({ value, answer }) {
+    console.log({ answer })
+    console.log({ value })
+    // console.log(value ? value.guess : "nope")
+    let result = value ? checkGuess(answer, value.guess) : ""
+    //const result = checkGuess(answer, value)
+    console.log({ result })
+    // console.log("res", Object.values(results))
     return (<p className="guess">
         {/* {range(5).map((num, i) => (
             <span key={num} className="cell">{value ? value.guess[num] : undefined}</span>
@@ -15,7 +20,7 @@ function Guess({ value }) {
 
 
         {range(5).map((_, index) => (
-            <span key={index} className="cell">{value ? value.guess[index] : undefined}</span>
+            <span key={index} className={`cell ${result ? result[index].status : null}`}>{value ? value.guess[index] : undefined}</span>
         )
         )}
     </p >
