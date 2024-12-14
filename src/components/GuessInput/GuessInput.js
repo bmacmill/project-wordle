@@ -1,7 +1,7 @@
 import React from 'react';
 // import "../../styles.css"
 
-function GuessInput({ handleInputGuess }) {
+function GuessInput({ handleInputGuess, gameEnded }) {
   const [inputText, setInputText] = React.useState('')
 
   return <form className="guess-input-wrapper" onSubmit={((e) => {
@@ -20,7 +20,8 @@ function GuessInput({ handleInputGuess }) {
       maxLength={5}
       title="5 letter word"
       value={inputText}
-      disable={inputText.length < 4 ? "true" : "false"}
+      //disable={inputText.length < 4 ? "true" : "false"}
+      disabled={gameEnded}
       onChange={(e) => {
         const upperGuess = e.target.value.toUpperCase()
         setInputText(upperGuess)

@@ -2,31 +2,31 @@ import React from 'react';
 import { range } from "../../utils.js"
 import { checkGuess } from "../../game-helpers.js"
 
+function Cell({ letter, status }) {
+    const className = status ? `cell ${status}` : "cell"
+    return (
+        <span className={`${className}`}>{letter}</span>
+    )
+}
 
 function Guess({ value, answer }) {
-    console.log({ answer })
-    console.log({ value })
-    // console.log(value ? value.guess : "nope")
-    let result = value ? checkGuess(answer, value.guess) : ""
-    //const result = checkGuess(answer, value)
+    //console.log(checkGuess("SMILE", "MILES"))
+    console.log(range(5))
+    let result = value ? checkGuess(value.guess, answer) : null
+
+    //not sure why i need this turnary above?^^^
     console.log({ result })
-    // console.log("res", Object.values(results))
-    return (<p className="guess">
-        {/* {range(5).map((num, i) => (
-            <span key={num} className="cell">{value ? value.guess[num] : undefined}</span>
-
-        ))
-        } */}
-
-
-        {range(5).map((_, index) => (
-            <span key={index} className={`cell ${result ? result[index].status : null}`}>{value ? value.guess[index] : undefined}</span>
-        )
-        )}
-    </p >
+    //console.log({ value })
+    // console.log({ answer })
+    return (
+        <p className="guess">
+            {range(5).map((num) => (
+                <Cell letter={result ? result[num].letter : undefined} key={num} status={result ? result[num].status : null} />
+                //<span key={num} className={`cell ${result ? result[num].status : undefined}`}>{value ? value.guess[num] : undefined}</span>
+            )
+            )}
+        </p >
     )
-
-
 }
 
 export default Guess;
