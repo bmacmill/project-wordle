@@ -39,15 +39,18 @@ function Game() {
     if (guesses.length === 6) {
       setGameEnded(true)
     }
-  })
-  return <>
+  }, [guesses])
+  return (
+    <>
 
-    <GuessList guesses={guesses} answer={answer} />
-    <GuessInput handleInputGuess={handleInputGuess} gameEnded={gameEnded} />
-    {gameEnded && isWinner ? <GameWon guesses={guesses} /> : null}
-    {gameEnded && !isWinner ? <GameOver answer={answer} /> : null}
+      <GuessList guesses={guesses} answer={answer} />
+      <GuessInput handleInputGuess={handleInputGuess} gameEnded={gameEnded} />
+      {gameEnded && isWinner ? <GameWon guesses={guesses} /> : null}
+      {gameEnded && !isWinner ? <GameOver answer={answer} /> : null}
 
-  </>;
+    </>
+  );
 }
 
 export default Game;
+
